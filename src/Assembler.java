@@ -293,7 +293,19 @@ class myAssembler{
 		for(String s: code) {
 			++a;
 			if(this.containsLiteral(s))
-				litTab.add(new literal(s,a));
+			try
+			{
+				literal=n.split(" ")[2];
+				int endIndex=literal.length()-1;
+				int value=Integer.parseInt(literal.substring(2,endIndex));
+			}
+			// if the literal is something like "=5f"
+			catch( NumberFormatException e)
+			{
+				System.out.println("Invalid Literal given");
+			}
+			
+			litTab.add(new literal(s,a));
 		}
 		
 		this.displayLitTab();
